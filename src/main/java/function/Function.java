@@ -1,18 +1,12 @@
 package function;
 
-import java.math.BigInteger;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.Vector;
-import org.apache.commons.math3.fraction.BigFraction;
-
 import static java.lang.Math.pow;
 
 public class Function {
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         count(Math.PI);
-    }
+   }*/
     public static double count(double value) {
         double result = 0.0;
         double prevRes = 0.0;
@@ -20,7 +14,9 @@ public class Function {
         int i = 1;
         do {
             prevRes = result;
-            result += bernouilli(2*i) * pow(-4, i)*(1 - pow(4, i)) * pow(value, 2*i - 1) / factorial(2*i);
+            result += (bernouilli(2 * i) * pow(-4, i) * (1 - pow(4, i)) * pow(value, 2 * i - 1))
+                    /((factorial(2 * i)));
+
             i++;
         } while (Math.abs(result-prevRes) >= EPS);
         System.out.println("Result: " + result);
@@ -37,7 +33,7 @@ public class Function {
         return A[0];
     }
 
-
+//BigInteger
     public static long factorial(int i) {
         long fact = 1;
         if (i == 0) return 1;
