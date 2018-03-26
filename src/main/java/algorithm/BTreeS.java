@@ -7,10 +7,8 @@ public class BTreeS {
     public BTreeS() {
 
         root = new Node();
-
         root.isLeaf = true;
         root.numberOfNodes = 0;
-
         root.key[0] = -1;
     }
 
@@ -19,17 +17,12 @@ public class BTreeS {
 
 
         if (r.numberOfNodes == 3) {
-
             Node s = new Node();
-
             root = s;
             s.numberOfNodes = 0;
             s.isLeaf = false;
             s.children[0] = r;
-
-
             splitChild(s, 1, r);
-
             insertNonfull(s, k);
         } else {
             insertNonfull(r, k);
@@ -37,9 +30,7 @@ public class BTreeS {
     }
 
     public void insertNonfull(Node node, int value) {
-
         int i = node.numberOfNodes;
-
         if (node.isLeaf) {
             while (i >= 1 && value < node.key[i - 1]) {
                 node.key[i] = node.key[i - 1];
@@ -61,7 +52,6 @@ public class BTreeS {
                     i++;
                 }
             }
-
             insertNonfull(node.children[i - 1], value);
         }
     }
@@ -77,7 +67,6 @@ public class BTreeS {
             z.children[0] = newChild.children[2];
         }
         newChild.numberOfNodes = 1;
-
         for (int j = parentNode.numberOfNodes + 1; j >= childIndex + 1; j--) {
             parentNode.children[j] = parentNode.children[j - 1];
             parentNode.key[j - 1] = parentNode.key[j - 2];
@@ -95,7 +84,6 @@ public class BTreeS {
         if (i <= node.numberOfNodes && value == node.key[i - 1]) {
             return true;
         }
-
         if (!node.isLeaf) {
             return search(node.children[i - 1], value);
         }
@@ -141,7 +129,6 @@ public class BTreeS {
         printBtree(root, "");
         return printBtree(root, "");
     }
-
 
     public boolean printBtree(Node node, String indent) {
         if (node == null) {
