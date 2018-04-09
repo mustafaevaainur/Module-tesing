@@ -1,77 +1,134 @@
 package functionTest;
 
-
 import function.Function;
+
 import org.junit.Test;
+
+import java.math.BigDecimal;
 
 import static org.junit.Assert.*;
 
 public class FunctionTest {
-    final Double EPS = 0.1;
+    final BigDecimal EPS = BigDecimal.valueOf(0.01);
 
     @Test
-    public void countTest0() {
-        double x = 0;
-        double sub = Math.abs(Math.tan(x) - Function.count(x));
-        assertEquals(sub < EPS, true);
+    public void testCount0() {
+        double n = 0;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(n)).subtract(Function.count(n));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
     }
 
     @Test
-    public void countTestPI4() {
-        double x = Math.PI / 4;
-        double sub = Math.abs(Math.tan(x) - Function.count(x));
-        assertEquals(sub < EPS, true);
+    public void testCountPi6() {
+        double pi = Math.PI / 6;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
     }
 
     @Test
-    public void countTestPI6() {
-        double x = Math.PI / 6;
-        double sub = Math.abs(Math.tan(x) - Function.count(x));
-        assertEquals(sub < EPS, true);
+    public void testCountPi3() {
+        double pi = Math.PI / 3;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
     }
 
     @Test
-    public void countTestPI3() {
-        double x = Math.PI / 3;
-        double sub = Math.abs(Math.tan(x) - Function.count(x));
-        assertEquals(sub < EPS, true);
+    public void testCountPi2() {
+        double pi = Math.PI / 2 - 0.5;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
     }
 
     @Test
-    public void countTestArctg() {
-        double x = Math.atan(1);
-        double sub = Math.abs(Math.tan(x) - Function.count(x));
-        assertEquals(sub < EPS, true);
-    }
-
-
-    @Test
-    public void countTest1() {
-        double x = 1;
-        double sub = Math.abs(Math.tan(x) - Function.count(x));
-        assertEquals(sub < EPS, true);
+    public void testCountMin1() {
+        double n = -1;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(n)).subtract(Function.count(n));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
     }
 
     @Test
-    public void countTestMin1() {
-        double x = -1;
-        double sub = Math.abs(Math.tan(x) - Function.count(x));
-        assertEquals(sub < EPS, true);
+    public void testCount1() {
+        double n = 1;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(n)).subtract(Function.count(n));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
     }
 
     @Test
-    public void countTest40() {
-        double x = 0.00000001;
-        double sub = Math.abs(Math.tan(x) - Function.count(x));
-        assertEquals(sub < EPS, true);
+    public void testCountMinPi2() {
+        double pi = -Math.PI / 2 + 0.5;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
     }
 
     @Test
-    public void countTestABC() {
-        char x = 'x';
-        double sub = Math.abs(Math.tan(x) - Function.count(x));
-        assertEquals(sub < EPS, false);
+    public void testCountPi4() {
+        double pi = Math.PI / 4;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
     }
 
+    @Test
+    public void testCountMinPi4() {
+        double pi = -Math.PI / 4;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
+    }
+
+    @Test
+    public void testCountMinPi6() {
+        double pi = -Math.PI / 6;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
+    }
+
+    @Test
+    public void testCountMinPi3() {
+        double pi = -Math.PI / 3;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == -1);
+    }
+
+    //ряд тейлора лежит в дианазоне от -pi/2; pi/2
+
+    @Test
+    public void DopTest() {
+        double pi = -Math.PI / 2;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == 1);
+    }
+    @Test
+    public void DopTest2() {
+        double pi = Math.PI / 2;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == 1);
+    }
+
+    @Test
+    public void DopTest3() {
+        double pi = Math.PI;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == 1);
+    }
+
+    @Test
+    public void DopTest4() {
+        double pi = -Math.PI;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == 1);
+    }
+
+    @Test
+    public void DopTest5() {
+        double pi = -2* Math.PI/3 ;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == 1);
+    }
+
+    @Test
+    public void DopTest6() {
+        double pi = -2* Math.PI/4 ;
+        BigDecimal sub = BigDecimal.valueOf(Math.tan(pi)).subtract(Function.count(pi));
+        assertTrue(sub.abs().compareTo(EPS) == 1);
+    }
 }
 

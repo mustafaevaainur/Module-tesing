@@ -1,28 +1,55 @@
-
 package algotirhmTests;
 
 import org.junit.Assert;
 import org.junit.Test;
 import algorithm.BTreeS;
+
+
+
 public class BTreeSTest extends Assert {
     final int TEST_NUMBER = 666;
 
     @Test
+    public void test() {
+        BTreeS<Integer> btree = new BTreeS<Integer>();
+        int[] i = {10, 1, 2, 3, 8};
+        for (int n : i) {
+            btree.insert(n);
+        }
+        assertEquals(btree.print(), " 1 2 3 8 10");
+        assertEquals(btree.preOrder(), "2 1 8 3 10 ");
+        assertEquals(btree.postOrder(),"1 3 10 8 2 " );
+    }
+
+    @Test
+    public void testDel() {
+        BTreeS<Integer> btree = new BTreeS<Integer>();
+        int[] i = {10, 1, 2, 3, 8};
+        for (int n : i) {
+            btree.insert(n);
+        }
+        btree.delete(3);
+        assertEquals(btree.print(), " 1 2 8 10");
+        assertEquals(btree.preOrder(), "2 1 8 10 ");
+        assertEquals(btree.postOrder(),"1 10 8 2 " );
+    }
+
+    @Test
     public void testSearch() {
-        BTreeS btree = new BTreeS();
-        int[] i = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        BTreeS<Integer> btree = new BTreeS<Integer>();
+        int[] i = {10, 1, 2, 3, 8};
         for (int n : i) {
             btree.insert(n);
+            btree.print();
         }
-        for (int n : i) {
-            assertEquals(btree.search(n), true);
-        }
+        btree.search(1);
+        assertEquals(btree.search(1), true);
     }
 
     @Test
-    public void testSearchF() {
-        BTreeS btree = new BTreeS();
-        int[] i = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    public void testSearch666() {
+        BTreeS<Integer> btree = new BTreeS<Integer>();
+        int[] i = {10, 1, 2, 3, 8};
         for (int n : i) {
             btree.insert(n);
         }
@@ -30,56 +57,15 @@ public class BTreeSTest extends Assert {
     }
 
     @Test
-    public void testDelete() {
-        BTreeS btree = new BTreeS();
-        int[] i = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 666};
+    public void testinsert666() {
+        BTreeS<Integer> btree = new BTreeS<Integer>();
+        int[] i = {10, 1, 2, 3};
         for (int n : i) {
             btree.insert(n);
         }
-        assertEquals(btree.delete(TEST_NUMBER), true);
-    }
-
-    @Test
-    public void testDeleteF() {
-        BTreeS btree = new BTreeS();
-        int[] i = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        for (int n : i) {
-            btree.insert(n);
-        }
-        assertEquals(btree.delete(TEST_NUMBER), false);
-    }
-
-    @Test
-    public void testDelEmptyBTree() {
-        BTreeS btree = new BTreeS();
-        assertEquals(btree.delete(TEST_NUMBER), false);
-    }
-
-    @Test
-    public void testSearchEmptyBTree() {
-        BTreeS btree = new BTreeS();
-        assertEquals(btree.search(TEST_NUMBER), false);
-    }
-
-    @Test
-    public void testInsert() {
-        BTreeS btree = new BTreeS();
-        int[] i = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        for (int n : i) {
-            btree.insert(n);
-        }
-    }
-
-    @Test
-    public void testPrint() {
-        BTreeS btree = new BTreeS();
-        int[] i = {10, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        for (int n : i) {
-            btree.insert(n);
-        }
-        btree.print();
-        assertEquals(btree.print(), true);
+        btree.insert(TEST_NUMBER);
+        assertEquals(btree.print(), " 1 2 3 10 666");
+        assertEquals(btree.preOrder(), "2 1 10 3 666 ");
+        assertEquals(btree.postOrder(),"1 3 666 10 2 " );
     }
 }
-
-

@@ -12,9 +12,10 @@ public class Node {
     public boolean isLeaf;
 
 
-    Node() {
-        key = new int[3];
-        children = new Node[4];
+    public Node() {
+        key = new int[2];
+        children = new Node[3];
         isLeaf = true;
     }
+
 }

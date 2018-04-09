@@ -21,10 +21,9 @@
     </build>
 
     <properties>
-        <java-version>9</java-version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-
-
 
     <dependencies>
         <dependency>
@@ -34,89 +33,35 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <version>4.12.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-launcher</artifactId>
+            <version>1.0.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
             <version>1.0.1</version>
             <scope>test</scope>
         </dependency>
-
-        <!--LOMBOK-->
-        <dependency>
-           <groupId>org.projectlombok</groupId>
-           <artifactId>lombok</artifactId>
-           <version>LATEST</version>
-           <scope>provided</scope>
-        </dependency>
-        <!--JUnit $ Mockito-->
-        <dependency>
-           <groupId>org.junit.jupiter</groupId>
-           <artifactId>junit-jupiter-params</artifactId>
-           <version>LATEST</version>
-           <scope>test</scope>
-        </dependency>
-        <dependency>
-           <groupId>org.hamcrest</groupId>
-           <artifactId>java-hamcrest</artifactId>
-           <version>LATEST</version>
-           <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>3.0</version>
-        </dependency>
-
-        <dependency>
-           <groupId>org.mockito</groupId>
-           <artifactId>mockito-all</artifactId>
-           <version>LATEST</version>
-           <scope>test</scope>
-        </dependency>
-        <dependency>
-           <groupId>junit</groupId>
-           <artifactId>junit</artifactId>
-           <version>LATEST</version>
-           <scope>test</scope>
-        </dependency>
-        <dependency>
-           <groupId>org.junit.platform</groupId>
-           <artifactId>junit-platform-launcher</artifactId>
-           <version>LATEST</version>
-           <scope>test</scope>
-        </dependency>
-        <dependency>
-           <groupId>org.junit.jupiter</groupId>
-           <artifactId>junit-jupiter-engine</artifactId>
-           <version>LATEST</version>
-           <scope>test</scope>
-        </dependency>
-        <dependency>
-           <groupId>org.junit.vintage</groupId>
-           <artifactId>junit-vintage-engine</artifactId>
-           <version>LATEST</version>
-           <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit/junit5-engine -->
-        <dependency>
-            <groupId>org.junit</groupId>
-            <artifactId>junit5-engine</artifactId>
-            <version>5.0.0-ALPHA</version>
-        </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
-            <version>2.0.2-beta</version>
+            <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
-            <scope>test</scope>
-        </dependency>
-        d
-
     </dependencies>
 
 </project>
