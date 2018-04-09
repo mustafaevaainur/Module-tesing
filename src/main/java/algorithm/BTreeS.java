@@ -82,10 +82,17 @@ public class BTreeS<T extends Comparable> {
 
     }
 
+<<<<<<< HEAD
 
     public BTreeS(Node root) {
         this.root = root;
 
+=======
+        root = new Node();
+        root.isLeaf = true;
+        root.numberOfNodes = 0;
+        root.key[0] = -1;
+>>>>>>> a58864e228e864bca17d3d81775ca99657715b42
     }
 
 
@@ -94,6 +101,7 @@ public class BTreeS<T extends Comparable> {
 
     }
 
+<<<<<<< HEAD
 
     public boolean search(T info) {
         return search(info, root);
@@ -124,6 +132,16 @@ public class BTreeS<T extends Comparable> {
         } else if (info.compareTo(node.information) > 0) {
             member = search(info, node.right);
 
+=======
+        if (r.numberOfNodes == 3) {
+            Node s = new Node();
+            root = s;
+            s.numberOfNodes = 0;
+            s.isLeaf = false;
+            s.children[0] = r;
+            splitChild(s, 1, r);
+            insertNonfull(s, k);
+>>>>>>> a58864e228e864bca17d3d81775ca99657715b42
         } else {
             member = search(info, node.left);
 
@@ -133,6 +151,7 @@ public class BTreeS<T extends Comparable> {
 
     }
 
+<<<<<<< HEAD
 
     public void insert(T info, Node node, Node parent, boolean right) {
         if (node == null) {
@@ -145,6 +164,14 @@ public class BTreeS<T extends Comparable> {
             } else {
                 parent.left = node = new Node(info, parent);
 
+=======
+    public void insertNonfull(Node node, int value) {
+        int i = node.numberOfNodes;
+        if (node.isLeaf) {
+            while (i >= 1 && value < node.key[i - 1]) {
+                node.key[i] = node.key[i - 1];
+                i--;
+>>>>>>> a58864e228e864bca17d3d81775ca99657715b42
             }
             restructInsert(node, false);
 
@@ -207,7 +234,11 @@ public class BTreeS<T extends Comparable> {
                 }
 
             }
+<<<<<<< HEAD
 
+=======
+            insertNonfull(node.children[i - 1], value);
+>>>>>>> a58864e228e864bca17d3d81775ca99657715b42
         }
 
     }
@@ -235,6 +266,7 @@ public class BTreeS<T extends Comparable> {
             a.right.parent = a;
 
         }
+<<<<<<< HEAD
 
         b.parent = a.parent;
         a.parent = b;
@@ -248,6 +280,12 @@ public class BTreeS<T extends Comparable> {
             a.balance = State.Balanced;
             b.balance = State.Balanced;
 
+=======
+        newChild.numberOfNodes = 1;
+        for (int j = parentNode.numberOfNodes + 1; j >= childIndex + 1; j--) {
+            parentNode.children[j] = parentNode.children[j - 1];
+            parentNode.key[j - 1] = parentNode.key[j - 2];
+>>>>>>> a58864e228e864bca17d3d81775ca99657715b42
         }
 
     }
@@ -275,6 +313,7 @@ public class BTreeS<T extends Comparable> {
             a.left.parent = a;
 
         }
+<<<<<<< HEAD
 
         b.parent = a.parent;
         a.parent = b;
@@ -288,6 +327,10 @@ public class BTreeS<T extends Comparable> {
             a.balance = State.Balanced;
             b.balance = State.Balanced;
 
+=======
+        if (!node.isLeaf) {
+            return search(node.children[i - 1], value);
+>>>>>>> a58864e228e864bca17d3d81775ca99657715b42
         }
 
     }
@@ -403,9 +446,13 @@ public class BTreeS<T extends Comparable> {
 
     }
 
+<<<<<<< HEAD
 
 
     public void delete(T info, Node node) throws NoSuchElementException {
+=======
+    public boolean printBtree(Node node, String indent) {
+>>>>>>> a58864e228e864bca17d3d81775ca99657715b42
         if (node == null) {
             throw new NoSuchElementException();
 
